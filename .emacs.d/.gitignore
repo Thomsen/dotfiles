@@ -18,6 +18,7 @@ cookies
 /ac-comphist.dat
 \#*
 /elpa
+/snippets
 site-lisp/package/
 /swank
 /.mc-lists.el

@@ -1,6 +1,15 @@
 ;; org-mode 7.9.3
 (add-to-list 'load-path "~/.emacs.d/org-8.0.7/lisp")
 
+(setq org-version "7.9.3")
+(if (string-lessp org-version "8.0.0") ; string-lessp alias string<
+  (progn
+    (require 'org-latex)
+    (require 'org-publish))
+  (progn
+    (require 'ox-latex) ; default article,report,book,beamer
+    (require 'ox-publish)))
+
 (require 'org-loaddefs)
 ;(add-hook 'ord-mode-hook
 ;	  (lambda () (setq truncate-lines nil)))
@@ -23,13 +32,13 @@
 ;	    (define-key yas/keymap [c+tab] 'yas/next-field)
 ;	    ))
 
-(require 'org-latex)
 
 ; xelatex to pdf
-;(setq org-latex-to-pdf-process ; before 8.0
-(setq org-latex-pdf-process
+(
+ setq org-latex-to-pdf-process ; before 8.0
+ ;setq org-latex-pdf-process   ; after 8.0
       '("xelatex -interaction nonstopmode %f"
-      "xelatex -interaction nonstopmode %f"))
+        "xelatex -interaction nonstopmode %f"))
 
 ;(setq org-confirm-babel-evaluate nil)
 
@@ -53,11 +62,13 @@
 ;  (setq org-export-latex-classes nil))
 ;
 ;(setq org-export-latex-listings t) 
-;(add-to-list 'org-export-latex-classes
 
-;; default article,report,book,beamer
-(require 'ox-latex)
-(add-to-list 'org-latex-classes
+
+
+
+(
+ ;add-to-list 'org-latex-classes ; after 8.0
+ add-to-list 'org-export-latex-classes ; before 8.0
 	     '("cn-article"
               "\\documentclass[10pt, a4paper]{article}
                \\usepackage{graphicx}
@@ -169,20 +180,18 @@
 ;	'("" "minted"))
 ;
 
-(setq org-export-backends 
+(setq org-export-backends
       (quote (
 	      ascii
 	      beamer  		; latex beamer format
-	      md		; markdown 
-	      html		 
+	      md		; markdown
+	      html
 	      man		; man page format
 	      odt
 	      texinfo
 	      taskjuggler)))
 
 ;; org-mode dropbox
-;(require 'org-publish) ; before 8.0
-(require 'ox-publish)
 (setq org-publish-project-alist
       '(
 	("blog-notes"
@@ -190,9 +199,12 @@
 	 :base-extension "org"
 	 :publishing-directory "~/Dropbox/Apps/Pancake.io/"
 	 :recursive t
-	 :publishing-function org-html-publish-to-html
-	 :html-link-home "index.html"
-	 :html-link-up "sitemap0.html"
+	 ;:publishing-function org-html-publish-to-html ;; after 8
+         ;:html-link-home "index.html"
+	 ;:html-link-up "sitemap.html"
+         :publishing-function org-publish-org-to-html ;; before 8
+	 :link-home "index.html"
+         :link-up "sitemap.html"
 	 :headline-levels 5
 	 :section-numbers nil
 	 :auto-preamble t

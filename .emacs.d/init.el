@@ -7,12 +7,6 @@
 (add-to-list 'load-path emacs-config-directory)
 (require 'init-benchmarking) ;; Measure startup time
 
-;;-----------------------------------------------------------------------------
-;; manage configure file
-;;-----------------------------------------------------------------------------
-(require 'init-base-settings)
-;(require 'init-org-exp)
-
 ;;----------------------------------------------------------------------------
 ;; Which functionality to enable (use t or nil for true and false)
 ;;----------------------------------------------------------------------------
@@ -101,6 +95,14 @@
 ;;------------------------------------------------------------------------
 (require 'init-yasnippet)
 (require 'init-scope)
+(require 'init-ess)
+
+;;-----------------------------------------------------------------------------
+;; manage configure file
+;;-----------------------------------------------------------------------------
+(require 'init-base-settings)
+(require 'init-other-settings)
+(require 'init-org-exp)
 
 ;; Extra packages which don't require any configuration
 
