@@ -1,10 +1,12 @@
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
 
-;; user-emacs-directory
-(setq emacs-config-directory "~/.emacs.d/config")
+;; user-emacs-directory (emacs 23+ default)
+(setq user-emacs-directory "~/.emacs.d/") 
 
-(add-to-list 'load-path emacs-config-directory)
+;; user-emacs-elpa-init
+(add-to-list 'load-path (expand-file-name "elpa-init" user-emacs-directory))
+
 (require 'init-benchmarking) ;; Measure startup time
 
 ;;----------------------------------------------------------------------------
@@ -133,6 +135,8 @@
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings
 ;;----------------------------------------------------------------------------
+(when (file-exists-p (expand-file-name "init-local.el" user-emacs-directory))
+  (error "Please move init-local.el to ~/.emacs.d/elpa-init"))
 (require 'init-local nil t)
 
 

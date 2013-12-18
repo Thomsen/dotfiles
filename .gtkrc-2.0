@@ -1,3 +1,4 @@
+
 style "gtkcompact" {
 	font_name="Sans 10"
 	GtkButton::default_border={0,0,0,0}
@@ -25,11 +26,13 @@ style "gtkcompact" {
 	GtkTreeView::expander-size=8
 	GtkTreeView::fixed-height-mode=TRUE
 	GtkWidget::focus_padding=0
+
 }
  
 class "GtkWidget" style "gtkcompact"
 
 style "gtkcompactextra" {
+      GtkToolbar::internal-padding=0
       xthickness=1
       ythickness=1
 }
