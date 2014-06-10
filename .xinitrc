@@ -4,4 +4,6 @@
 # Xresources
 xrdb ~/.Xresources
 
+xset b off
+
 # input method

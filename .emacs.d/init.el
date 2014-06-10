@@ -98,6 +98,10 @@
 (require 'init-yasnippet)
 (require 'init-scope)
 (require 'init-ess)
+;; local plugins
+(setq plugins-el (expand-file-name "plugins.el" user-emacs-directory))
+(when (file-exists-p plugins-el)
+  (load plugins-el))
 
 ;;-----------------------------------------------------------------------------
 ;; manage configure file

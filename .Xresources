@@ -8,6 +8,9 @@ Xft.hintstyle: hintslight
 
 !! xterm config
 
+! close beep sound
+!xset b off
+
 ! general settings
 xterm*termName: xterm-256color
 xterm*geometry: 100x28

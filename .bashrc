@@ -83,9 +83,6 @@ fi
 #alias l='ls -CF'
 
 alias emacs='emacs -nw --debug-init'
-alias fbterm='LANG=zh_CN.UTF-8 LC_ALL=zh_CN.UTF-8 fbterm -i fbterm_ucimf'
-export DISPLAY=":0"
-alias fbterm='LANG=zh_CN.UTF-8 LC_ALL=zh_CN.UTF-8 fbterm -i fcitx-fbterm'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -105,14 +102,16 @@ fi
 
 PATH=$PATH:$HOME/.rvm/bin: # Add RVM to PATH for scripting
 
-JAVA_HOME=/usr/lib/jvm/java-sun
+JAVA_HOME=/usr/lib/jvm/oracle-java
 
-ANDROID_SRC=/opt/android/android-src
-ANDROID_HOME=/opt/android/android-sdk-linux
+ANDROID_SRC=/home/android/android-src
+ANDROID_HOME=/home/android/android-sdk-linux
 ANDROID_PLATFORM_TOOLS=$ANDROID_HOME/platform-tools
 ANDROID_TOOLS=$ANDROID_HOME/tools
-NDK_ROOT=/usr/local/android/android-ndk-r8b
+NDK_ROOT=/opt/android-ndk-linux
 GOROOT=/usr/local/go 
+
+ANDROID_STUDIO_HOME=/opt/android-studio
 
 # android src using ccache
 export USE_CCACHE=1
@@ -131,8 +130,8 @@ GRADLE_OPTS="-Xmx1024m -Xms1024m -XX:MaxPermSize=2048m -XX:+CMSClassUnloadingEna
 SONAR_BIN_HOME=/var/www/sonarqube/bin/linux-x86-64/
 SONAR_RUNNER_HOME=/usr/local/sonar-runner
 
-export NDK_TOOLCHAIN=/usr/local/android/android-ndk-r8b/ndk-toolchain-p9/
-PATH=$PATH:$ANDROID_PLATFORM_TOOLS:$ANDROID_TOOLS:$COCOS2DX_HOME:/opt/bin:$GOROOT/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$SONAR_RUNNER_HOME/bin:$SONAR_BIN_HOME
+#export NDK_TOOLCHAIN=/usr/local/android/android-ndk-r8b/ndk-toolchain-p9/
+PATH=$PATH:$ANDROID_PLATFORM_TOOLS:$ANDROID_TOOLS:$ANDROID_STUDIO_HOME/bin:$NDK_ROOT:$COCOS2DX_HOME:/opt/bin:$GOROOT/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$SONAR_RUNNER_HOME/bin:$SONAR_BIN_HOME
 
 export JAVA_HOME ANDROID_HOME ANDROID_SRC M2_HOME NDK_ROOT
 
@@ -143,15 +142,19 @@ export LC_CTYPE="zh_CN.UTF-8"
 
 # export GTK2_RC_FILES=/usr/share/themes/dorian-theme/gtk-2.0/gtkrc
 
-ANDROID_SECURITY=/opt/android-security
+ANDROID_SECURITY=/home/android/android-security
 APKTOOL_HOME=$ANDROID_SECURITY/apktool1.5.2
 DEX2JAR_HOME=$ANDROID_SECURITY/dex2jar-0.0.9.13
 export PATH=$PATH:$ANDROID_SECURITY:$APKTOOL_HOME:$DEX2JAR_HOME:~/VirtualBoxVMs/genymotion-1.1.0
 
 # SET GNUstep
-#GNUSTEP_ROOT=/usr/share/GNUstep
-#export GNUSTEP_ROOT
-#source $GNUSTEP_ROOT/Makefiles/GNUstep.sh
-#export GNUSTEP_MAKEFILES=$GNUSTEP_ROOT/Makefiles/
+GNUSTEP_ROOT=/usr/share/GNUstep
+export GNUSTEP_ROOT
+source $GNUSTEP_ROOT/Makefiles/GNUstep.sh
+export GNUSTEP_MAKEFILES=$GNUSTEP_ROOT/Makefiles/
 
 export LD_LIBRARY_PATH=/usr/lib64/gtk-2.0/2.10.0/engines:
+
+# tip
+echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
+

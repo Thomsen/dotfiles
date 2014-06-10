@@ -105,4 +105,9 @@
     (toggle-read-only 1)))
 (add-hook 'find-file-hooks 'make-some-files-read-only)
 
+;; todo mode
+(setq todo-file-do "~/.emacs.d/todos/todo-do")
+(setq todo-file-done "～/.emacs.d/todos/todo-done")
+(setq todo-file-top "~/.emacs.d//todos/todo-top")
+
 (provide 'init-base-settings)
