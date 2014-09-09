@@ -229,4 +229,4 @@
 	)
 )
 
-(provide 'init-org-exp)
+(provide 'init-org-export)

@@ -34,6 +34,18 @@
       (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "SOMEDAY(S)" "PROJECT(P@)" "|" "CANCELLED(c@/!)"))))
 
+(setq org-agenda-files (list "~/.emacs.d/todos/work.org"
+				"~/.emacs.d/todos/projects.org"
+				"~/.emacs.d/todos/home.org"
+				"~/.emacs.d/todos"))
+
+(defun org-summary-todo (n-done n-not-done)
+  "switch entry to done when all subentries are done, to TODO otherwise."
+  (let (org-log-done org-log-states) ; turn off logging
+    (org-todo (if (= n-not-done 0) "DONE" "TODO"))
+    ))
+
+(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org clock

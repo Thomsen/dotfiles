@@ -56,7 +56,7 @@
 (require 'init-sessions)
 (require 'init-fonts)
 (require 'init-mmm)
-(require 'init-growl)
+;(require 'init-growl)
 
 (require 'init-editing-utils)
 
@@ -98,17 +98,21 @@
 (require 'init-yasnippet)
 (require 'init-scope)
 (require 'init-ess)
+
 ;; local plugins
 (setq plugins-el (expand-file-name "plugins.el" user-emacs-directory))
 (when (file-exists-p plugins-el)
   (load plugins-el))
+
+;; zencoding
+(require 'init-zencoding)
 
 ;;-----------------------------------------------------------------------------
 ;; manage configure file
 ;;-----------------------------------------------------------------------------
 (require 'init-base-settings)
 (require 'init-other-settings)
-(require 'init-org-exp)
+(require 'init-org-export)
 
 ;; Extra packages which don't require any configuration
 

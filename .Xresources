@@ -33,7 +33,8 @@ xterm*scaleHeight: 1.1
 xterm*preeditType: Root
 xterm*xftAntialias: true
 xterm*faceName: DejaVu Sans Mono:pixelsize=14
-xterm*faceNameDoublesize: WenQuanYi Zen Hei Mono:pixelsize=14
+!xterm*faceNameDoublesize: WenQuanYi Zen Hei Mono:pixelsize=14
+xterm*faceNameDoublesize: YaHei Consolas Hybrid:pixelsize=14
 
 ! trim trailing spaces
 xterm*trimSelection: true

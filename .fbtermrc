@@ -8,7 +8,7 @@
 # and using a fixed width font as the first is strongly recommended
 #font-names=DejaVu Sans Mono,YaHei Consolas Hybrid,Courier,SimSun:Blod
 font-names=DejaVu Sans Mono,YaHei Consolas HybridCourier,SimSun
-font-size=18
+font-size=16
 
 # force font width (and/or height), usually for non-fixed width fonts
 # legal value format: n (fw_new = n), +n (fw_new = fw_old + n), -n (fw_new = fw_old - n)
@@ -16,7 +16,7 @@ font-size=18
 #font-height=
 
 # default color of foreground/background text
-# available colors: 0 = black, 1 = red, 2 = green, 3 = brown, 4 = blue, 5 = magenta, 6 = cyan, 7 = white
+# available colors (8bit): 0 = black, 1 = red, 2 = green, 3 = brown, 4 = blue, 5 = magenta, 6 = cyan, 7 = white
 color-foreground=7
 color-background=0
 

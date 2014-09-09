@@ -82,7 +82,7 @@ fi
 #alias la='ls -A'
 #alias l='ls -CF'
 
-alias emacs='emacs -nw --debug-init'
+alias emacs='emacs -nw --color --debug-init'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -103,6 +103,7 @@ fi
 PATH=$PATH:$HOME/.rvm/bin: # Add RVM to PATH for scripting
 
 JAVA_HOME=/usr/lib/jvm/oracle-java
+CLASSPATH=.:$JAVA_HOME/lib:$CLASSPATH
 
 ANDROID_SRC=/home/android/android-src
 ANDROID_HOME=/home/android/android-sdk-linux
@@ -158,3 +159,5 @@ export LD_LIBRARY_PATH=/usr/lib64/gtk-2.0/2.10.0/engines:
 # tip
 echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
 
+#export TERM=fbterm
+export TERM=xterm-256color
