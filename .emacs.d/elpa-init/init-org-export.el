@@ -1,5 +1,5 @@
 ;; org-mode 7.9.3
-(add-to-list 'load-path "~/.emacs.d/org-8.0.7/lisp")
+;(add-to-list 'load-path "~/.emacs.d/org-8.0.7/lisp")
 
 (setq org-version "7.9.3")
 (if (string-lessp org-version "8.0.0") ; string-lessp alias string<

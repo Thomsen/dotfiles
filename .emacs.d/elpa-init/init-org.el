@@ -2,12 +2,13 @@
   (require-package 'org))
 (require-package 'org-fstree)
 (when *is-a-mac*
-  (require-package 'org-mac-link-grabber)
+  (require-package 'org-mac-link)
+  (autoload 'org-mac-grab-link "org-mac-link" nil t)
   (require-package 'org-mac-iCal))
 
 
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map (kbd "C-c l") 'org-store-link)
+(define-key global-map (kbd "C-c a") 'org-agenda)
 
 ;; Various preferences
 (setq org-log-done t
@@ -18,6 +19,7 @@
       org-agenda-include-diary t
       org-agenda-window-setup 'current-window
       org-fast-tag-selection-single-key 'expert
+      org-html-validation-link nil
       org-export-kill-product-buffer-when-displayed t
       org-tags-column 80)
 
@@ -29,6 +31,9 @@
 ; Targets complete in steps so we start with filename, TAB shows the next level of targets etc
 (setq org-outline-path-complete-in-steps t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Org todo
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
@@ -62,6 +67,10 @@
 (setq org-clock-into-drawer t)
 ;; Removes clocked tasks with 0:00 duration
 (setq org-clock-out-remove-zero-time-clocks t)
+
+;; Show clock sums as hours and minutes, not "n days" etc.
+(setq org-time-colocksum-format
+  '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
 
 ;; Show the clocked-in task - if any - in the header line
 (defun sanityinc/show-org-clock-in-header-line ()
@@ -99,14 +108,32 @@
 ;;                   (re-search-backward "^[0-9]+:[0-9]+-[0-9]+:[0-9]+ " nil t))
 ;;                 (insert (match-string 0))))))
 
-
 (after-load 'org
   (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element)
   (when *is-a-mac*
     (define-key org-mode-map (kbd "M-h") nil))
   (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element)
   (when *is-a-mac*
-    (autoload 'omlg-grab-link "org-mac-link-grabber")
-    (define-key org-mode-map (kbd "C-c g") 'omlg-grab-link)))
+    (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
+
+(after-load 'org
+  (org-babel-do-load-languages
+    'org-babel-load-languages
+    '((R . t)
+      (ditaa . t)
+      (dot . t)
+      (emacs-lisp . t)
+      (gnuplot . t)
+      (hashkell . nil)
+      (latex . t)
+      (ledger .t)
+      (ocaml . nil)
+      (octave . t)
+      (python . t)
+      (ruby . t)
+      (screen . nil)
+      (sh . t)
+      (sql . nil)
+      (sqlite . t))))
 
 (provide 'init-org)
