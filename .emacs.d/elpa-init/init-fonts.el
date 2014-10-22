@@ -1,5 +1,25 @@
-(require 'cl)
+(cond
+ ((string-equal system-type "gnu/linux") ; linux
+  (when (member "Source Code Pro" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Source Code Pro-11"))
+    (add-to-list 'default-frame-alist '(font . "Source Code Pro-11"))
+    ;(set-frame-font "Source Code Pro-11")
+    (setq window-system-default-frame-alist
+          '((x
+             (menu-bar-lines . 1)
+             (tool-bar-lines . nil)
+             (mouse-wheel-mode . 1)
+             (mouse-wheel-follow-mouse . t)
+             (mouse-avoidance-mode . 'exile)
+             (font . "Source Code Pro 20"))
+            (nil
+             (menu-bar-lines . 0)
+             (tool-bar-lines . 0))
+            )))
+  )
+)
 
+(require 'cl)
 
 (defun sanityinc/font-name-replace-size (font-name new-size)
   (let ((parts (split-string font-name "-")))
