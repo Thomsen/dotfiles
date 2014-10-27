@@ -14,7 +14,8 @@
              (font . "Source Code Pro 20"))
             (nil
              (menu-bar-lines . 0)
-             (tool-bar-lines . 0))
+             (tool-bar-lines . 0)
+             (font . "Source Code Pro-14"))
             )))
   )
 )

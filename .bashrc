@@ -77,13 +77,6 @@ if [ -x /usr/bin/dircolors ]; then
     #alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
-
-alias emacs='emacs -nw --color --debug-init'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -146,7 +139,7 @@ export LC_CTYPE="zh_CN.UTF-8"
 ANDROID_SECURITY=/home/android/android-security
 APKTOOL_HOME=$ANDROID_SECURITY/apktool1.5.2
 DEX2JAR_HOME=$ANDROID_SECURITY/dex2jar-0.0.9.13
-export PATH=$PATH:$ANDROID_SECURITY:$APKTOOL_HOME:$DEX2JAR_HOME:~/VirtualBoxVMs/genymotion-1.1.0
+export PATH=$PATH:$ANDROID_SECURITY:$APKTOOL_HOME:$DEX2JAR_HOME:~/VirtualBoxVMs/genymotion
 
 # SET GNUstep
 GNUSTEP_ROOT=/usr/share/GNUstep
