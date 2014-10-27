@@ -52,6 +52,9 @@
 ;; 编码时自动换行
 (global-set-key (kbd "RET") 'newline-and-indent)
 
+;; space 替换 TAB
+(setq-default indent-tabs-mode nil)
+
 ;; 设置自动换行的快捷键
 (global-set-key [f12] 'toggle-truncate-lines)
 (add-hook 'message-mode-hook
