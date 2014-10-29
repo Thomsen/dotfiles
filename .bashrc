@@ -154,3 +154,15 @@ echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
 
 #export TERM=fbterm
 export TERM=xterm-256color
+
+# tmux
+tmux_init()
+{
+  tmux new-session -s "thom" -d -n "local"
+  #tmux new-window -n "other"
+  tmux attach-session -d
+}
+
+if which tmux 2>&1 > /dev/null; then
+  test -z "$TMUX" && (tmux attach || tmux_init)
+fi

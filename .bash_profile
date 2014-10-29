@@ -13,5 +13,5 @@
 #http_proxy=127.0.0.1:8087
 #export http_proxy
 
-# emacs daemon
-emacs --daemon &
+# to tmux
+. ~/.bashrc
