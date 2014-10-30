@@ -18,7 +18,7 @@
 
 if [ `emacs --version | grep 'Emacs 23*' | grep 'Emacs 24*' | wc -l` = 1 ]
 then
-   if [ `ps ux | grep emacs | grep \ --daemon | wc -l` = 1 ]
+   if [ `ps ux | grep emacs | grep \ --daemon | wc -l` = 0 ]
    then
        `emacs --daemon`
    else
