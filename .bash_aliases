@@ -6,3 +6,5 @@ alias l='ls -CF'
 
 alias emacs='emacs -nw --color --debug-init'
 alias et='emacsclient -t'
+
+alias rmd='rm -r.[^.]*'
