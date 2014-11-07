@@ -1,9 +1,7 @@
-(require-package 'rinari)
+(maybe-require-package 'rinari)
 (after-load 'rinari
   (diminish 'rinari-minor-mode "Rin"))
-(global-rinari-mode)
-
-(require-package 'haml-mode)
+;(global-rinari-mode)
 
 (defun update-rails-ctags ()
   (interactive)

@@ -1,11 +1,8 @@
-(require-package 'json)
-(when (>= emacs-major-version 24)
-  (require-package 'js2-mode)
-  (require-package 'ac-js2))
+(maybe-require-package 'json-mode)
+(maybe-require-package 'js2-mode)
+(maybe-require-package 'ac-js2)
+(maybe-require-package 'coffee-mode)
 (require-package 'js-comint)
-(require-package 'rainbow-delimiters)
-(require-package 'coffee-mode)
-
 
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(js2-mode js-mode)))
@@ -23,34 +20,39 @@
                                   unless (eq preferred-javascript-mode (cdr entry))
                                   collect entry)))
 
-
-(add-auto-mode 'js-mode "\\.json\\'")
-
-
 ;; js2-mode
 (after-load 'js2-mode
-  (add-hook 'js2-mode-hook '(lambda () (setq mode-name "JS2"))))
+  ;; Disable js2 mode's syntax error highlighting by default...
+  (setq-default js2-mode-show-parse-errors nil
+                js2-mode-show-strict-warnings nil)
 
-(setq js2-use-font-lock-faces t
-      js2-mode-must-byte-compile nil
-      js2-basic-offset preferred-javascript-indent-level
-      js2-indent-on-enter-key t
-      js2-auto-indent-p t
-      js2-bounce-indent-p nil)
+;; ... but enable it if flycheck can't handle javascript
+(autoload 'flycheck-get-checker-for-buffer "flycheck")
+(defun sanityinc/disable-js2-checks-if-flycheck-active ()
+  (unless (flycheck-get-checker-for-buffer)
+    (set (make-local-variable 'js2-mode-show-parse-errors) t)
+    (set (make-local-variable 'js2-mode-show-strict-warnings) t)))
+(add-hook 'js2-mode-hook 'sanityinc/disable-js2-checks-if-flycheck-active)
+(add-hook 'js2-mode-hook '(lambda () (setq mode-name "JS2")))
+
+(setq-default
+ js2-basic-offset preferred-javascript-indent-level
+ js2-bounce-indent-p nil)
 
 (after-load 'js2-mode
-  (js2-imenu-extras-setup))
+  (js2-imenu-extras-setup)))
 
 ;; js-mode
-(setq js-indent-level preferred-javascript-indent-level)
-
-
-;; standard javascript-mode
-(setq javascript-indent-level preferred-javascript-indent-level)
+(setq-default js-indent-level preferred-javascript-indent-level)
 
 (add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
 
-
+
+;; Javascript nests {} and () a lot, so I find this helpful
+(require-package 'rainbow-delimiters)
+(dolist (hook '(js2-mode-hook js-mode-hook json-mode-hook))
+  (add-hook hook 'rainbow-delimiters-mode))
+
 ;;; Coffeescript
 
 (after-load 'coffee-mode
@@ -83,8 +85,7 @@
 ;; Alternatively, use skewer-mode
 ;; ---------------------------------------------------------------------------
 
-(when (featurep 'js2-mode)
-  (require-package 'skewer-mode)
+(when (maybe-require-package 'skewer-mode)
   (after-load 'skewer-mode
     (add-hook 'skewer-mode-hook
               (lambda () (inferior-js-keys-mode -1)))))
