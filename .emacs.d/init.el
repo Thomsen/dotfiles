@@ -93,11 +93,12 @@
 (require 'init-misc)
 
 ;;-------------------------------------------------------------------------
-;; add plugin
+;; new plugin
 ;;------------------------------------------------------------------------
 (require 'init-yasnippet)
 (require 'init-scope)
 (require 'init-ess)
+(require 'init-web)
 
 ;; local plugins
 (setq plugins-el (expand-file-name "plugins.el" user-emacs-directory))
