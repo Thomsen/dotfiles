@@ -1,6 +1,7 @@
 ;;; Basic ruby setup
-(require-package 'ruby-mode)
+(require-package 'enh-ruby-mode)
 (require-package 'ruby-hash-syntax)
+
 
 (add-auto-mode 'ruby-mode
                "Rakefile\\'" "\\.rake\\'" "\\.rxml\\'"
@@ -21,12 +22,10 @@
                 (run-hooks 'prog-mode-hook)))))
 
 
-
 ;;; Inferior ruby
 (require-package 'inf-ruby)
 
 
-
 ;;; Ruby compilation
 (require-package 'ruby-compilation)
 
@@ -37,7 +36,7 @@
     (define-key m [f6] 'recompile)))
 
 
-
+
 ;;; Robe
 (require-package 'robe)
 (after-load 'ruby-mode
@@ -49,19 +48,17 @@
               (set-auto-complete-as-completion-at-point-function))))
 
 
-
+
 ;;; ri support
 (require-package 'yari)
 (defalias 'ri 'yari)
 
 
-
 ;;; YAML
 
 (require-package 'yaml-mode)
 
 
-
 ;;; ERB
 (require-package 'mmm-mode)
 (defun sanityinc/ensure-mmm-erb-loaded ()
