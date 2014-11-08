@@ -31,6 +31,8 @@
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
 
+
+
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
@@ -65,7 +67,6 @@
 ;(require 'init-growl)
 
 (require 'init-editing-utils)
-
 (require 'init-darcs)
 (require 'init-git)
 
@@ -74,18 +75,20 @@
 (require 'init-markdown)
 (require 'init-csv)
 (require 'init-erlang)
+(require 'init-html)
 (require 'init-javascript)
 (require 'init-php)
 (require 'init-ruby-mode)
+(require 'init-ruby-extra)
 (require 'init-rails)
-(require 'init-org)
-(require 'init-nxml)
 (require 'init-css)
 (require 'init-haml)
+(require 'init-nxml)
 (require 'init-python-mode)
 (require 'init-haskell)
 (require 'init-sql)
 
+(require 'init-org)
 (require 'init-paredit)
 (require 'init-lisp)
 (require 'init-slime)
@@ -98,6 +101,12 @@
 (require 'init-marmalade)
 (require 'init-misc)
 
+;; local plugins
+(setq plugins-el (expand-file-name "plugins.el" user-emacs-directory))
+(when (file-exists-p plugins-el)
+  (load plugins-el))
+
+
 ;;-------------------------------------------------------------------------
 ;; new plugin
 ;;------------------------------------------------------------------------
@@ -105,14 +114,8 @@
 (require 'init-scope)
 (require 'init-ess)
 (require 'init-web)
-
-;; local plugins
-(setq plugins-el (expand-file-name "plugins.el" user-emacs-directory))
-(when (file-exists-p plugins-el)
-  (load plugins-el))
-
-;; zencoding
 (require 'init-zencoding)
+
 
 ;;-----------------------------------------------------------------------------
 ;; manage configure file
