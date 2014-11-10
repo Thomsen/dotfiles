@@ -32,7 +32,6 @@
 (require 'init-exec-path) ;; Set up $PATH
 
 
-
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
@@ -90,7 +89,7 @@
 
 (require 'init-org)
 (require 'init-paredit)
-(require 'init-lisp)
+(require 'init-lisp) ; happy hacking
 (require 'init-slime)
 (require 'init-clojure)
 (require 'init-common-lisp)
