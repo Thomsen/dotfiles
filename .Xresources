@@ -16,7 +16,7 @@ xterm*termName: xterm-256color
 xterm*geometry: 100x28
 xterm*saveLines: 2048
 ! up page left, down page right, drag middle
-xterm*scrollBar: false 
+xterm*scrollBar: false
 xterm*loginshell: false
 xterm*background: #2b2b2b
 xterm*foreground: #a9b7c6
@@ -42,7 +42,7 @@ xterm*translations: #override \
 ! allow selecting email/url by double-click
 xterm*charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
 
-! tango color scheme
+! tango color scheme (purcell tomorrow-eighties)
 xterm*color0: #1e1e1e
 xterm*color1: #cc0000
 xterm*color2: #4e9a06
