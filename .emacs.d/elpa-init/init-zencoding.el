@@ -5,4 +5,6 @@
 
 ;; C-j expand
 
+(define-key global-map "\C-j" 'zencoding-expand-line) ; linefeed
+
 (provide 'init-zencoding)

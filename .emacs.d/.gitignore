@@ -27,3 +27,4 @@ site-lisp/package/
 /frame-restore-parameters
 /eshell
 /.smex-items
+/server
