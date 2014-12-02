@@ -11,6 +11,7 @@ CVS
 .*.lock
 /tramp
 /TODO
+/todos/*
 /anything-c-adaptive-history
 /.org-id-locations
 cookies

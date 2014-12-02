@@ -39,10 +39,7 @@
       (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "SOMEDAY(S)" "PROJECT(P@)" "|" "CANCELLED(c@/!)"))))
 
-(setq org-agenda-files (list "~/.emacs.d/todos/work.org"
-				"~/.emacs.d/todos/projects.org"
-				"~/.emacs.d/todos/home.org"
-				"~/.emacs.d/todos"))
+(setq org-agenda-files (list "~/.emacs.d/todos"))
 
 (defun org-summary-todo (n-done n-not-done)
   "switch entry to done when all subentries are done, to TODO otherwise."
