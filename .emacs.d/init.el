@@ -114,6 +114,7 @@
 (require 'init-ess)
 (require 'init-web)
 (require 'init-zencoding)
+(require 'init-protobuf)
 
 
 ;;-----------------------------------------------------------------------------
