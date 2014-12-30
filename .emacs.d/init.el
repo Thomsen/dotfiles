@@ -8,7 +8,7 @@
   (message "Your Emacs is old, and some functionality in this config will be disabled, Please upgrade if possible."))
 
 ;; user-emacs-directory (emacs 23+ default)
-(setq user-emacs-directory "~/.emacs.d/") 
+(setq user-emacs-directory "~/.emacs.d/")
 
 ;; user-emacs-elpa-init
 (add-to-list 'load-path (expand-file-name "elpa-init" user-emacs-directory))
@@ -115,6 +115,7 @@
 (require 'init-web)
 (require 'init-zencoding)
 (require 'init-protobuf)
+(require 'init-jde)
 
 
 ;;-----------------------------------------------------------------------------
