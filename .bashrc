@@ -111,9 +111,8 @@ ANDROID_STUDIO_HOME=/opt/android-studio
 export USE_CCACHE=1
 export CCACHE_DIR=~/.ccache
 
-#M2_HOME=/usr/share/maven  # maven3
-#M2_HOME=/usr/share/maven2 # maven2
-MAVEN_HOME=/usr/local/apache/maven-3.0.5
+M2_HOME=/usr/local/apache/maven-2.2.1 # maven2
+MAVEN_HOME=/usr/local/apache/maven-3.1.1
 GRADLE_HOME=/usr/local/gradle
 
 JAVA_OPTS="-Xmx1024m -Xms1024m -XX:MaxPermSize=2048m"

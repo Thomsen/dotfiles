@@ -15,23 +15,24 @@
 
 (defun use-web-mode-hook ()
   "Hooks for web mode."
-  (setq web-mode-markup-indent-offset 2)
-  )
+  (setq web-mode-markup-indent-offset 2))
 (add-hook 'web-mode-hook 'use-web-mode-hook)
+
+;; fold-or-unfold C-c C-f
 
 ;; snippet
 (setq web-mode-extra-snippets
       '(("erb" . (("name" . ("beg" . "end"))))
         ("php" . (("name" . ("beg" . "end"))
                   ("name" . ("beg" . "end"))))
-       ))
+        ))
 
 ;; auto-pair
 (setq web-mode-extra-auto-pairs
       '(("erb" . (("open" "close")))
         ("php" . (("open" "close")
                   ("open" "close")))
-      ))
+        ))
 (setq web-mode-enable-auto-pairing t)
 
 (provide 'init-web)
