@@ -1,5 +1,10 @@
-(require-package 'ascope)
+;;(require-package 'ascope)
 
-(require 'ascope)
+;;(require 'ascope)
+
+;; need install cscope
+(require-package 'xcscope)
+
+(require 'xcscope)
 
 (provide 'init-scope)

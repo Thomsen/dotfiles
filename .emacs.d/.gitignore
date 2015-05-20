@@ -29,3 +29,5 @@ site-lisp/package/
 /eshell
 /.smex-items
 /server
+ido.last
+recentf

@@ -1,5 +1,5 @@
 (maybe-require-package 'clojure-mode)
-(maybe-require-package 'clojure-test-mode)
+;(maybe-require-package 'clojure-test-mode)
 (require-package 'cljsbuild-mode)
 (require-package 'elein)
 
