@@ -82,8 +82,8 @@ fi
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.sh_aliases ]; then
+    . ~/.sh_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -101,17 +101,21 @@ CLASSPATH=.:$JAVA_HOME/lib:$CLASSPATH
 ANDROID_SRC=/home/android/android-src
 ANDROID_HOME=/home/android/android-sdk-linux
 ANDROID_PLATFORM_TOOLS=$ANDROID_HOME/platform-tools
+ANDROID_BUILD_TOOLS=$ANDROID_HOME/build-tools
 ANDROID_TOOLS=$ANDROID_HOME/tools
 NDK_ROOT=/opt/android-ndk-linux
 GOROOT=/usr/local/go 
 
 ANDROID_STUDIO_HOME=/opt/android-studio
+export ANDROID_HOME
 
 # android src using ccache
 export USE_CCACHE=1
 export CCACHE_DIR=~/.ccache
 
-M2_HOME=/usr/local/apache/maven-2.2.1 # maven2
+#M2_HOME=/usr/local/apache/maven-2.2.1 # maven2
+#M2_HOME=/usr/local/apache/maven-3.0.5 # maven3
+M2_HOME=/usr/local/apache/maven-3.1.1 # maven3
 MAVEN_HOME=/usr/local/apache/maven-3.1.1
 GRADLE_HOME=/usr/local/gradle
 
