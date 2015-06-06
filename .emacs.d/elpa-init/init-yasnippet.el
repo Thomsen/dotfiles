@@ -6,6 +6,7 @@
 ;  (add-to-list 'yas-snippet-dirs snippets))
 
 (require 'yasnippet)
-(yas-global-mode 1)
+(yas/global-mode 1)
+
 
 (provide 'init-yasnippet)

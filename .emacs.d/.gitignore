@@ -11,7 +11,7 @@ CVS
 .*.lock
 /tramp
 /TODO
-/todos/*.org
+/todos
 /anything-c-adaptive-history
 /.org-id-locations
 cookies
@@ -32,3 +32,4 @@ site-lisp/package/
 ido.last
 recentf
 /abbrev_defs
+/semanticdb
