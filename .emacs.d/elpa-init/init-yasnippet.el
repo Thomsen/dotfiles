@@ -1,4 +1,4 @@
-(require-package 'yasnippet)
+(maybe-require-package 'yasnippet)
 
 ;; set custom snippets
 (setq snippets (expand-file-name "~/.emacs.d/snippets"))
