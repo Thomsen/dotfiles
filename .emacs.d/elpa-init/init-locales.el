@@ -11,12 +11,11 @@
 
 (when (or window-system (locale-is-utf8-p))
   (setq utf-translate-cjk-mode nil) ; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
-  (set-language-environment 'utf-8)
+  ; (set-language-environment 'utf-8) ; win 10 cursor high delay
   (setq locale-coding-system 'utf-8)
   (set-default-coding-systems 'utf-8)
   (set-terminal-coding-system 'utf-8)
-  (unless (eq system-type 'windows-nt)
-   (set-selection-coding-system 'utf-8))
+  (set-selection-coding-system (if (eq system-type 'windows-nt) 'utf-16-le 'utf-8))
   (prefer-coding-system 'utf-8))
 
 (provide 'init-locales)

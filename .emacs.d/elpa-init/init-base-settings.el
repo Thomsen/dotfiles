@@ -61,7 +61,6 @@
 	  (lambda () (setq default-fill-column 80)
 	    (turn-on-auto-fill)))
 
-(set-language-environment 'utf-8)
 (setq pathname-coding-system 'utf-8)
 (setq file-name-coding-system 'utf-8)
 (setq buffer-file-coding-system 'utf-8)
@@ -76,9 +75,9 @@
   (create-fontset-from-fontset-spec
    (concat
     "-*-fixed-medium-r-normal-*-*-*-*-*-*-*-fontset-myfontset,"
-    (format "ascii:-outline-Consolas-normal-normal-normal-mono-%d-*-*-*-c-*-iso8859-1," ansi-font-size)
-    (format "unicode:-microsoft-Microsoft YaHei-normal-normal-normal-*-%d-*-*-*-*-0-iso8859-1," cjk-font-size)
-    (format "chinese-gb2312:-microsoft-Microsoft YaHei-normal-normal-normal-*-%d-*-*-*-*-0-iso8859-1," cjk-font-size)
+    (format "ascii:-outline-YaHei Consolas Hybrid-normal-normal-normal-mono-%d-*-*-*-c-*-iso8859-1," ansi-font-size)
+    (format "unicode:-microsoft-YaHei Consolas Hybrid-normal-normal-normal-*-%d-*-*-*-*-0-iso8859-1," cjk-font-size)
+    (format "chinese-gb2312:-microsoft-YaHei Consolas Hybrid-normal-normal-normal-*-%d-*-*-*-*-0-iso8859-1," cjk-font-size)
     ;; (format "unicode:-outline-文泉驿等宽微米黑-normal-normal-normal-sans-*-*-*-*-p-*-gb2312.1980-0," cjk-font-size)
     ;; (format "chinese-gb2312:-outline-文泉驿等宽微米黑-normal-normal-normal-sans-*-*-*-*-p-*-gb2312.1980-0," cjk-font-size)
     )))
