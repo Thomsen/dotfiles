@@ -63,7 +63,7 @@
 (require 'init-sessions)
 (require 'init-fonts)
 (require 'init-mmm)
-;(require 'init-growl)
+; (require 'init-growl)
 
 (require 'init-editing-utils)
 (require 'init-darcs)
@@ -115,7 +115,7 @@
 (require 'init-web)
 (require 'init-zencoding)
 (require 'init-protobuf)
-(require 'init-jde)
+;(require 'init-jde)
 
 
 ;;-----------------------------------------------------------------------------
@@ -123,7 +123,7 @@
 ;;-----------------------------------------------------------------------------
 (require 'init-base-settings)
 (require 'init-other-settings)
-;(require 'init-org-export)
+; (require 'init-org-export)
 
 ;; Extra packages which don't require any configuration
 
