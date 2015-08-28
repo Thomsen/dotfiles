@@ -110,12 +110,11 @@
 ;; new plugin
 ;;------------------------------------------------------------------------
 (require 'init-yasnippet)
-(require 'init-scope)
+(require 'init-cscope)
 (require 'init-ess)
 (require 'init-web)
-(require 'init-zencoding)
+(require 'init-emmet)
 (require 'init-protobuf)
-;(require 'init-jde)
 
 
 ;;-----------------------------------------------------------------------------

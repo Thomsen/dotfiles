@@ -6,5 +6,6 @@
 (require-package 'xcscope)
 
 (require 'xcscope)
+(cscope-setup)
 
-(provide 'init-scope)
+(provide 'init-cscope)
