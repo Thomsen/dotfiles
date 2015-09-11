@@ -3,6 +3,7 @@
 (maybe-require-package 'ac-js2)
 (maybe-require-package 'coffee-mode)
 (require-package 'js-comint)
+(require-package 'js-doc)
 
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(js2-mode js-mode)))
@@ -43,6 +44,13 @@
 
   (after-load 'js2-mode
     (js2-imenu-extras-setup)))
+
+
+;; js-doc
+(add-hook 'js2-mode-hook
+          #'(lambda ()
+              (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
+              (define-key js2-mode-map "@" 'js-doc-insert-tag)))
 
 ;; js-mode
 (setq-default js-indent-level preferred-javascript-indent-level)

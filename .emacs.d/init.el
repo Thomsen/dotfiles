@@ -115,6 +115,7 @@
 (require 'init-web)
 (require 'init-emmet)
 (require 'init-protobuf)
+(require 'init-jsx)
 
 
 ;;-----------------------------------------------------------------------------
