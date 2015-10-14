@@ -116,6 +116,7 @@
 (require 'init-emmet)
 (require 'init-protobuf)
 (require 'init-jsx)
+(require 'init-thrift)
 
 
 ;;-----------------------------------------------------------------------------
