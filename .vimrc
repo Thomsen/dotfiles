@@ -23,27 +23,29 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
-call vundle#end()
+"Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'tpope/vim-rails.git'
 
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'tpope/vim-rails.git'
-
-"Bundle 'FuzzyFinder'
+"Plugin 'FuzzyFinder'
 
 " 语法配色
-Bundle 'tomasr/molokai'
+Plugin 'tomasr/molokai'
 " markdown vim mode
-Bundle 'plasticboy/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
 " write blog for oschina
-Bundle 'vim-scripts/UltraBlog'
+Plugin 'vim-scripts/UltraBlog'
 " c vim mode
-Bundle 'vim-scripts/c.vim'
+Plugin 'vim-scripts/c.vim'
+
+" erlang runtime
+Plugin 'vim-erlang/vim-erlang-runtime'
 
 " :PluginList
 " :PluginInstall
 " :PluginSearch foo
 " :PluginClearn
 
+call vundle#end()
 filetype plugin indent on
 
 "====================================基本配置================================="
