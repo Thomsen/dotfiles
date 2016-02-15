@@ -3,37 +3,56 @@ filetype off
 
 set backupdir=~/.saves/vim
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
 
-Bundle 'gmarik/vundle'
+call vundle#begin()
 
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
+Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+Plugin 'tpope/vim-fugitive'
 
-Bundle 'git://git.wincent.com/command-t.git'
+Plugin 'L9'
+
+Plugin 'git://git.wincent.com/command-t.git'
+
+"git repos on your local machine
+"Plugin 'file://home/'
+
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+" avoid a name conflict with L9
+"Plugin 'user/L9', {'name': 'newL9'}
+
+"Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'tpope/vim-rails.git'
+
+"Plugin 'FuzzyFinder'
 
 " 语法配色
-Bundle 'tomasr/molokai'
+Plugin 'tomasr/molokai'
 " markdown vim mode
-Bundle 'plasticboy/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
 " write blog for oschina
-Bundle 'vim-scripts/UltraBlog'
+Plugin 'vim-scripts/UltraBlog'
 " c vim mode
-Bundle 'vim-scripts/c.vim'
+Plugin 'vim-scripts/c.vim'
 
+" erlang runtime
+Plugin 'vim-erlang/vim-erlang-runtime'
+
+" :PluginList
+" :PluginInstall
+" :PluginSearch foo
+" :PluginClearn
+
+call vundle#end()
 filetype plugin indent on
 
 "====================================基本配置================================="
 set nocompatible	" 关闭vi兼容模式
 
 syntax on
-colorscheme molokai
+"colorscheme molokai
 
 set cursorline		" 突出显示当前行
 
