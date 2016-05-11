@@ -117,6 +117,7 @@
 (require 'init-protobuf)
 (require 'init-jsx)
 (require 'init-thrift)
+(require 'init-indent)
 
 
 ;;-----------------------------------------------------------------------------
