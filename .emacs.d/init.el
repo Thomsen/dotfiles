@@ -13,6 +13,7 @@
 ;; user-emacs-elpa-init
 (add-to-list 'load-path (expand-file-name "elpa-init" user-emacs-directory))
 
+
 (require 'init-benchmarking) ;; Measure startup time
 
 ;;----------------------------------------------------------------------------
@@ -100,6 +101,10 @@
 (require 'init-marmalade)
 (require 'init-misc)
 
+
+;; user-plugins-directory
+(setq user-plugins-directory (expand-file-name "plugins" user-emacs-directory))
+
 ;; local plugins
 (setq plugins-el (expand-file-name "plugins.el" user-emacs-directory))
 (when (file-exists-p plugins-el)
@@ -117,6 +122,7 @@
 (require 'init-protobuf)
 (require 'init-jsx)
 (require 'init-thrift)
+(require 'init-indent)
 
 
 ;;-----------------------------------------------------------------------------

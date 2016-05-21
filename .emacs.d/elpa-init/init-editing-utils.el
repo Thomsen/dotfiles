@@ -17,7 +17,6 @@
  delete-selection-mode t
  ediff-split-window-function 'split-window-horizontally
  ediff-window-setup-function 'ediff-setup-windows-plain
- indent-tabs-mode nil
  make-backup-files nil
  mouse-yank-at-point t
  save-interprogram-paste-before-kill t
@@ -359,5 +358,19 @@ With arg N, insert N newlines."
 (guide-key-mode 1)
 (diminish 'guide-key-mode)
 
+;; fill column indicator
+(require 'fill-column-indicator)
+(setq fci-rule-width 1)
+(setq fci-rule-color "darkblue")
+(setq-default fci-rule-column 120)
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)
+(defun auto-fci-mode (&optional unused)
+  (if (> (window-width) fci-rule-column)
+      (fci-mode 1)
+    (fci-mode 0))
+  )
+(add-hook 'after-change-major-mode-hook 'auto-fci-mode)
+(add-hook 'window-configuration-change-hook 'auto-fci-mode)
 
 (provide 'init-editing-utils)

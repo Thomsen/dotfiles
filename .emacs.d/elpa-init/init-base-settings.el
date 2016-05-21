@@ -12,11 +12,11 @@
 (setq
  backup-by-copying t
  backup-directory-alist
-   '(("." . "~/.saves"))
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)
+ '(("." . "~/.saves"))
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)
 
 ;; 取消滚动栏
 (set-scroll-bar-mode nil)
@@ -49,27 +49,11 @@
 (set-face-attribute 'my-hl-line-face nil :background
 		    my-hl-line-face-background-color)
 
-;; 编码时自动换行
-(global-set-key (kbd "RET") 'newline-and-indent)
-
-;; space 替换 TAB
-(setq-default indent-tabs-mode nil)
-
-;; 设置自动换行的快捷键
-(global-set-key [f12] 'toggle-truncate-lines)
-(add-hook 'message-mode-hook
-	  (lambda () (setq default-fill-column 80)
-	    (turn-on-auto-fill)))
-
 (setq pathname-coding-system 'utf-8)
 (setq file-name-coding-system 'utf-8)
 (setq buffer-file-coding-system 'utf-8)
 
-
-;; 设置字体大小
-(setq cjk-font-size 20)
-(setq ansi-font-size 20)
-
+;; 设置字体
 (defun set-font()
   (interactive)
   (create-fontset-from-fontset-spec
@@ -81,6 +65,9 @@
     ;; (format "unicode:-outline-文泉驿等宽微米黑-normal-normal-normal-sans-*-*-*-*-p-*-gb2312.1980-0," cjk-font-size)
     ;; (format "chinese-gb2312:-outline-文泉驿等宽微米黑-normal-normal-normal-sans-*-*-*-*-p-*-gb2312.1980-0," cjk-font-size)
     )))
+
+(setq cjk-font-size 16)
+(setq ansi-font-size 16)
 
 ;; c-x c-= increase font size
 (defun increase-font-size()
@@ -179,5 +166,6 @@
 (setq todo-file-do "~/.emacs.d/todos/todo-do")
 (setq todo-file-done "～/.emacs.d/todos/todo-done")
 (setq todo-file-top "~/.emacs.d/todos/todo-top")
+
 
 (provide 'init-base-settings)
