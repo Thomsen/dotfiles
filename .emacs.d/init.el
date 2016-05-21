@@ -125,6 +125,7 @@
 (require 'init-base-settings)
 (require 'init-other-settings)
 (require 'init-org-export)
+(require 'init-auctex)
 
 ;; Extra packages which don't require any configuration
 

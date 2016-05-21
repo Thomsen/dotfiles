@@ -145,7 +145,7 @@
 
 (setq resume '("resume"
                "\\documentclass[11pt, a4paper]{moderncv}
-                \\usepackage{moderncv}
+
                "
                ("\\section{%s}" . "\\section*{%s}")
                ("\\subsection{%s}" . "\\subsection*{%s}")
