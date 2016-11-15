@@ -124,6 +124,7 @@
 (require 'init-thrift)
 (require 'init-indent)
 (require 'init-nodejs-repl)
+(require 'init-typescript)
 
 
 ;;-----------------------------------------------------------------------------
