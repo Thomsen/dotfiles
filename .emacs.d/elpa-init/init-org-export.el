@@ -145,7 +145,7 @@
 
 (setq resume '("resume"
                "\\documentclass[11pt, a4paper]{moderncv}
-                \\usepackage{moderncv}
+
                "
                ("\\section{%s}" . "\\section*{%s}")
                ("\\subsection{%s}" . "\\subsection*{%s}")
@@ -164,33 +164,22 @@
 
 ;; beamer class, for presentations
 (setq beamer '("beamer"
-               "\\documentclass[11pt,professionalfonts]{beamer}
-                \\mode
-                \\usetheme{{{{Warsaw}}}}
-                %\\usecolortheme{{{{beamercolortheme}}}}
-                \\beamertemplateballitem
-                \\setbeameroption{show notes}
-                \\usepackage{graphicx}
-                \\usepackage{tikz}
-                \\usepackage{xcolor}
+               "\\documentclass[]{beamer}
+                
                 \\usepackage{xeCJK}
-                \\usepackage{amsmath}
-                \\usepackage{lmodern}
-                \\usepackage{fontspec,xunicode,xltxtra}
-                \\usepackage{polyglossia}
-                \\setmainfont{Times New Roman}
-                \\setCJKmainfont{DejaVu Sans YuanTi}
-                \\setCJKmonofont{DejaVu Sans YuanTi Mono}
-                \\usepackage{verbatim}
-                \\usepackage{listings}
-                \\institute{{{{beamerinstitute}}}}
-                \\subject{{{{beamersubject}}}}
-               "
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\begin{frame}[fragile]\\frametitle{%s}"
-                "\\end{frame}"
-                "\\begin{frame}[fragile]\\frametitle{%s}"
-                "\\end{frame}")))
+                \\setCJKmainfont[Scale=0.9]{YaHei Consolas Hybrid} %中文字体
+                \\setCJKmonofont[Scale=0.9]{YaHei Consolas Hybrid}
+
+                \\setmainfont[BoldFont=DejaVu Sans Mono]{YaHei Consolas Hybrid}
+                \\setsansfont[BoldFont=DejaVu Sans Mono]{DejaVu Sans Mono}
+                \\setmonofont{DejaVu Sans Mono}
+
+                "
+               ;; ("\\section{%s}" . "\\section*{%s}")
+               ;; ("\\begin{frame}[fragile]\\frametitle{%s}"
+               ;;  "\\end{frame}"
+               ;;  )
+               ))
 
 (if (string-lessp org-version base-version)
     ;; before 8.0
