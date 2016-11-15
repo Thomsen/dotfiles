@@ -123,6 +123,7 @@
 (require 'init-jsx)
 (require 'init-thrift)
 (require 'init-indent)
+(require 'init-typescript)
 
 
 ;;-----------------------------------------------------------------------------
