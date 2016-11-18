@@ -1,5 +1,5 @@
 (require-package 'tide)
-(require-package 'company)
+(maybe-require-package 'company)
 
 (defun setup-tide-mode ()
   (interactive)
