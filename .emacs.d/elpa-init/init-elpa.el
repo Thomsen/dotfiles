@@ -26,9 +26,12 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 ;;; Also use Melpa for most packages
-(add-to-list 'package-archives `("popkit" . ,(if (< emacs-major-version 24)
-                                                 "http://elpa.popkit.org/packages/" ;; melpa - melpa.org
-                                               "https://elpa.popkit.org/packages/")))
+(add-to-list 'package-archives `("melpa" . ,(if (< emacs-major-version 24)
+                                                 "http://melpa.org/packages/"
+                                               "https://melpa.org/packages/")))
+;; (add-to-list 'package-archives `("popkit" . ,(if (< emacs-major-version 24)
+;;                                                  "http://elpa.popkit.org/packages/"
+;;                                                "https://elpa.popkit.org/packages/")))
 
 
 
