@@ -35,7 +35,7 @@
   (progn
     (add-to-list 'package-archives `("popkit-gnu" . , (if (< emacs-major-version 24)
                                                           "http://elpa.popkit.org/packages/"
-                                                        "https://elpa.popkit.org/packages")))
+                                                        "https://elpa.popkit.org/packages/")))
     ))
  ((string-equal system-type "darwin")
   (progn
