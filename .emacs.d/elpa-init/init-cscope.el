@@ -1,7 +1,3 @@
-;;(require-package 'ascope)
-
-;;(require 'ascope)
-
 ;; need install cscope
 (require-package 'xcscope)
 
