@@ -38,6 +38,7 @@
   `((t (:background "white")))
   "Basic face for hl-line-mode"
   :group 'hl-line)
+
 (setq my-hl-line-face-background-color
       (let ((color (or (x-color-values (face-attribute 'default :background))
 		       (list 0 0 0)))
@@ -53,71 +54,28 @@
 (setq file-name-coding-system 'utf-8)
 (setq buffer-file-coding-system 'utf-8)
 
-;; 设置字体
-(defun set-font()
-  (interactive)
-  (create-fontset-from-fontset-spec
-   (concat
-    "-*-fixed-medium-r-normal-*-*-*-*-*-*-*-fontset-myfontset,"
-    (format "ascii:-outline-YaHei Consolas Hybrid-normal-normal-normal-mono-%d-*-*-*-c-*-iso8859-1," ansi-font-size)
-    (format "unicode:-microsoft-YaHei Consolas Hybrid-normal-normal-normal-*-%d-*-*-*-*-0-iso8859-1," cjk-font-size)
-    (format "chinese-gb2312:-microsoft-YaHei Consolas Hybrid-normal-normal-normal-*-%d-*-*-*-*-0-iso8859-1," cjk-font-size)
-    ;; (format "unicode:-outline-文泉驿等宽微米黑-normal-normal-normal-sans-*-*-*-*-p-*-gb2312.1980-0," cjk-font-size)
-    ;; (format "chinese-gb2312:-outline-文泉驿等宽微米黑-normal-normal-normal-sans-*-*-*-*-p-*-gb2312.1980-0," cjk-font-size)
-    )))
-
-(setq cjk-font-size 16)
-(setq ansi-font-size 16)
-
-;; c-x c-= increase font size
-(defun increase-font-size()
-  "increase font size"
-  (interactive)
-  (if (< cjk-font-size 48)
-      (progn
-        (setq cjk-font-size (+ cjk-font-size 2))
-        (setq ansi-font-size (+ ansi-font-size 2))))
-  (message "cjk-size:%d pt, ansi-size:%d pt" cjk-font-size ansi-font-size)
-  (set-font)
-  (sit-for .5))
-
+;; c-x c-= increase font size (text-scale-adjust)
 ;; c-x c-- descrease font size
-(defun decrease-font-size()
-  "decrease font size"
-  (interactive)
-  (if (> cjk-font-size 2)
-      (progn
-        (setq cjk-font-size (- cjk-font-size 2))
-        (setq ansi-font-size (- ansi-font-size 2))))
-  (message "cjk-size:%d pt, ansi-size:%d pt" cjk-font-size ansi-font-size)
-  (set-font)
-  (sit-for .5))
-
-(defun default-font-size()
-  "default font size"
-  (interactive)
-  (setq cjk-font-size 16)
-  (setq ansi-font-size 16)
-  (message "cjk-size:%d pt, ansi-size:%d pt" cjk-font-size ansi-font-size)
-  (set-font)
-  (sit-for .5))
-
-;; need delete desktop
-(if window-system
-    (progn
-      (set-font)
-      ;; 把上面的字体集设置成默认字体
-      ;; 这个字体名使用是create-fontset-from-fontset-spec函数的第一行的最后两个字段
-      (set-frame-font "fontset-myfontset")
-
-      ;; 鼠标快捷键绑定
-      (global-set-key '[C-wheel-up] 'increase-font-size)
-      (global-set-key '[C-wheel-down] 'decrease-font-size)
-      ;; 键盘快捷键绑定
-      (global-set-key (kbd "C--") 'decrease-font-size) ;Ctrl+-
-      (global-set-key (kbd "C-0") 'default-font-size) ;Ctrl+0
-      (global-set-key (kbd "C-=") 'increase-font-size) ;Ctrl+=
-      ))
+;; set a default font
+(cond
+ ((string-equal system-type "windows-nt")  ;; Microsoft Windows
+  (when (member "YaHei Consolas Hybrid" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "YaHei Consolas Hybrid-10"))
+    (add-to-list 'default-frame-alist '(font . "YaHei Consolas Hybrid-10"))
+    (set-default-font "YaHei Consolas Hybrid")
+    (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+    (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)))
+ ((string-equal system-type "gnu/linux")  ;; Linux 
+  (when (member "YaHei Consolas Hybrid" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "YaHei Consolas Hybrid-10" ))
+    (add-to-list 'default-frame-alist '(font . "YaHei Consolas Hybrid-10"))
+    (global-set-key (kdb "<C-mouse-4>") 'text-scale-increase)
+    (global-set-key (kdb "<C-mouse-5>") 'text-scale-decrease)))
+ ((string-equal system-type "darwin")     ;; Mac OS
+  (when (member "YaHei Consolas Hybrid" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "YaHei Consolas Hybrid-10" ))
+    (add-to-list 'default-frame-alist '(font . "YaHei Consolas Hybrid-10"))))
+ )
 
 
 ;; 优先级，从后到前

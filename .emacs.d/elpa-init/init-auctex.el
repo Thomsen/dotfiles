@@ -1,4 +1,4 @@
-(maybe-require-package 'auctex-mode)
+(maybe-require-package 'auctex)
 
 ;; (require 'tex-mik)
 
