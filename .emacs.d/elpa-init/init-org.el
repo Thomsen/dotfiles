@@ -115,22 +115,26 @@
 
 (after-load 'org
   (org-babel-do-load-languages
-    'org-babel-load-languages
-    '((R . t)
-      (ditaa . t)
-      (dot . t)
-      (emacs-lisp . t)
-      (gnuplot . t)
-      (hashkell . nil)
-      (latex . t)
-      (ledger .t)
-      (ocaml . nil)
-      (octave . t)
-      (python . t)
-      (ruby . t)
-      (screen . nil)
-      (sh . t)
-      (sql . nil)
-      (sqlite . t))))
+   'org-babel-load-languages
+   '((R . t)
+     (ditaa . t)
+     (dot . t)
+     (emacs-lisp . t)
+     (gnuplot . t)
+     (hashkell . nil)
+     (latex . t)
+     (ledger .t)
+     (ocaml . nil)
+     (octave . t)
+     (python . t)
+     (ruby . t)
+     (screen . nil)
+     (sh . t)
+     (sql . nil)
+     (sqlite . t))))
+
+(require-package 'org-journal)
+(require 'org-journal)
+
 
 (provide 'init-org)
