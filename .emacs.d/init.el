@@ -131,6 +131,8 @@
 (require 'init-indent)
 (require 'init-nodejs-repl)
 (require 'init-typescript)
+(require 'init-ssh)
+(require 'init-editorconfig)
 
 
 ;;-----------------------------------------------------------------------------

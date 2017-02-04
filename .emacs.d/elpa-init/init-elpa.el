@@ -29,14 +29,16 @@
 (cond
  ((string-equal system-type "windows-nt")
   (progn
-    (add-to-list 'package-archives '("popkit-nt" . "http://elpa.popkit.org/packages/"))
-    ))
+    ;; (add-to-list 'package-archives '("popkit-nt" . "http://elpa.popkit.org/packages/"))
+    ;; ))
+    (add-to-list 'package-archives '("melpa-nt" . "http://melpa.org/packages/"))))
  ((string-equal system-type "gnu/linux")
   (progn
-    (add-to-list 'package-archives `("popkit-gnu" . , (if (< emacs-major-version 24)
-                                                          "http://elpa.popkit.org/packages/"
-                                                        "https://elpa.popkit.org/packages/")))
-    ))
+    ;; (add-to-list 'package-archives `("popkit-gnu" . , (if (< emacs-major-version 24)
+    ;;                                                       "http://elpa.popkit.org/packages/"
+    ;;                                                     "https://elpa.popkit.org/packages/")))
+    ;; ))
+    (add-to-list 'package-archives '("melpa-gnu" . "https://melpa.org/packages/"))))
  ((string-equal system-type "darwin")
   (progn
     (add-to-list 'package-archives `("melpa-dar" . , (if (< emacs-major-version 24)
