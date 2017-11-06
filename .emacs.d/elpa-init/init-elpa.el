@@ -43,7 +43,7 @@
   (progn
     (add-to-list 'package-archives `("melpa-dar" . , (if (< emacs-major-version 24)
                                                          "http://melpa.org/packages/"
-                                                       "https://melpa.org/packages/")))
+                                                       "http://elpa.popkit.org/packages/")))
     ))
  )
 

@@ -8,6 +8,10 @@
 ;; 设置主题
 ;(load-theme ')
 
+;; set frame
+(set-frame-position (selected-frame) 720 0)
+(setq default-frame-alist '((height . 22) (width . 98) (tool-bar-lines . 0)))
+
 ;; 设置自动备份
 (setq
  backup-by-copying t
@@ -73,8 +77,8 @@
     (global-set-key (kdb "<C-mouse-5>") 'text-scale-decrease)))
  ((string-equal system-type "darwin")     ;; Mac OS
   (when (member "YaHei Consolas Hybrid" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "YaHei Consolas Hybrid-10" ))
-    (add-to-list 'default-frame-alist '(font . "YaHei Consolas Hybrid-10"))))
+    (add-to-list 'initial-frame-alist '(font . "YaHei Consolas Hybrid-15" ))
+    (add-to-list 'default-frame-alist '(font . "YaHei Consolas Hybrid-15"))))
  )
 
 

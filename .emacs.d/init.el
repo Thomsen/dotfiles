@@ -133,6 +133,8 @@
 (require 'init-typescript)
 (require 'init-ssh)
 (require 'init-editorconfig)
+(require 'init-kotlin)
+(require 'init-clang)
 
 
 ;;-----------------------------------------------------------------------------
