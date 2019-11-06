@@ -1,105 +1,124 @@
-;;; This file bootstraps the configuration, which is divided into
-;;; a number of other files.
+;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
+;;; Commentary:
 
+;; This file bootstraps the configuration, which is divided into
+;; a number of other files.
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
+;;; Code:
 
-(let ((minver "23.3"))
- (when (version<= emacs-version "23.1")
-   (error "Your Emacs is to old -- this config requires v%s or higher" minver)))
-(when (version<= emacs-version "24")
-  (message "Your Emacs is old, and some functionality in this config will be disabled, Please upgrade if possible."))
+;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
+;;(setq debug-on-error t)
 
-;; user-emacs-directory (emacs 23+ default)
-(setq user-emacs-directory "~/.emacs.d/")
+(let ((minver "24.4"))
+  (when (version< emacs-version minver)
+    (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
+(when (version< emacs-version "25.1")
+  (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
-;; user-emacs-elpa-init
-(add-to-list 'load-path (expand-file-name "elpa-init" user-emacs-directory))
-
-
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-benchmarking) ;; Measure startup time
 
-;;----------------------------------------------------------------------------
-;; Which functionality to enable (use t or nil for true and false)
-;;----------------------------------------------------------------------------
-(defconst *spell-check-support-enabled* nil)
+(defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
-(defconst *is-cocoa-emacs* (and *is-a-mac* (eq window-system 'ns)))
+
+;;----------------------------------------------------------------------------
+;; Adjust garbage collection thresholds during startup, and thereafter
+;;----------------------------------------------------------------------------
+(let ((normal-gc-cons-threshold (* 20 1024 1024))
+      (init-gc-cons-threshold (* 128 1024 1024)))
+  (setq gc-cons-threshold init-gc-cons-threshold)
+  (add-hook 'emacs-startup-hook
+            (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
-(require 'init-compat)
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (require 'init-utils)
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
+;; Calls (package-initialize)
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
 
+;;----------------------------------------------------------------------------
+;; Allow users to provide an optional "init-preload-local.el"
+;;----------------------------------------------------------------------------
+(require 'init-preload-local nil t)
 
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
 
-(require-package 'wgrep)
-(require-package 'project-local-variables)
 (require-package 'diminish)
-(require-package 'scratch)
-(require-package 'mwe-log-commands)
+(maybe-require-package 'scratch)
+(require-package 'command-log-mode)
 
 (require 'init-frame-hooks)
 (require 'init-xterm)
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
-(require 'init-maxframe)
-(require 'init-proxies)
 (require 'init-dired)
 (require 'init-isearch)
+(require 'init-grep)
 (require 'init-uniquify)
 (require 'init-ibuffer)
 (require 'init-flycheck)
 
 (require 'init-recentf)
-(require 'init-ido)
+(require 'init-smex)
+(require 'init-ivy)
+;;(require 'init-helm)
 (require 'init-hippie-expand)
-(require 'init-auto-complete)
+(require 'init-company)
 (require 'init-windows)
 (require 'init-sessions)
-(require 'init-fonts)
 (require 'init-mmm)
-; (require 'init-growl)
 
 (require 'init-editing-utils)
+(require 'init-whitespace)
+
+(require 'init-vc)
 (require 'init-darcs)
 (require 'init-git)
+(require 'init-github)
 
-(require 'init-crontab)
+(require 'init-projectile)
+
+(require 'init-compile)
+;;(require 'init-crontab)
 (require 'init-textile)
 (require 'init-markdown)
 (require 'init-csv)
 (require 'init-erlang)
-(require 'init-html)
 (require 'init-javascript)
 (require 'init-php)
-(require 'init-ruby-mode)
-(require 'init-ruby-extra)
-(require 'init-rails)
+(require 'init-org)
+(require 'init-nxml)
+(require 'init-html)
 (require 'init-css)
 (require 'init-haml)
-(require 'init-nxml)
-(require 'init-python-mode)
+(require 'init-http)
+(require 'init-python)
 (require 'init-haskell)
+(require 'init-elm)
+(require 'init-purescript)
+(require 'init-ruby)
+(require 'init-rails)
 (require 'init-sql)
+(require 'init-rust)
+(require 'init-toml)
+(require 'init-yaml)
+(require 'init-docker)
+(require 'init-terraform)
+;;(require 'init-nix)
+(maybe-require-package 'nginx-mode)
 
-(require 'init-org)
 (require 'init-paredit)
-(require 'init-lisp) ; happy hacking
+(require 'init-lisp)
 (require 'init-slime)
 (require 'init-clojure)
+(require 'init-clojure-cider)
 (require 'init-common-lisp)
 
 (when *spell-check-support-enabled*
@@ -107,44 +126,12 @@
 
 (require 'init-misc)
 
+(require 'init-folding)
+(require 'init-dash)
 
-;; user-plugins-directory
-(setq user-plugins-directory (expand-file-name "plugins" user-emacs-directory))
-
-;; local plugins
-(setq plugins-el (expand-file-name "plugins.el" user-emacs-directory))
-(when (file-exists-p plugins-el)
-  (load plugins-el))
-
-
-;;-------------------------------------------------------------------------
-;; new plugin
-;;------------------------------------------------------------------------
-(require 'init-yasnippet)
-(require 'init-cscope)
-(require 'init-ess)
-(require 'init-web)
-(require 'init-emmet)
-(require 'init-protobuf)
-(require 'init-jsx)
-(require 'init-thrift)
-(require 'init-indent)
-(require 'init-nodejs-repl)
-(require 'init-typescript)
-(require 'init-ssh)
-(require 'init-editorconfig)
-(require 'init-kotlin)
-(require 'init-clang)
-
-
-;;-----------------------------------------------------------------------------
-;; manage configure file
-;;-----------------------------------------------------------------------------
-(require 'init-base-settings)
-(require 'init-other-settings)
-(require 'init-org-export)
-(require 'init-auctex)
-
+;;(require 'init-twitter)
+;; (require 'init-mu)
+(require 'init-ledger)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
@@ -153,30 +140,31 @@
 (require-package 'dsvn)
 (when *is-a-mac*
   (require-package 'osx-location))
-(require-package 'regex-tool)
+(unless (eq system-type 'windows-nt)
+  (maybe-require-package 'daemons))
+(maybe-require-package 'dotenv-mode)
+
+(when (maybe-require-package 'uptimes)
+  (setq-default uptimes-keep-count 200)
+  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
+
+(when (fboundp 'global-eldoc-mode)
+  (add-hook 'after-init-hook 'global-eldoc-mode))
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
 ;;----------------------------------------------------------------------------
-(require 'server)
-(unless (server-running-p)
-  (server-start))
-
+(add-hook 'after-init-hook
+          (lambda ()
+            (require 'server)
+            (unless (server-running-p)
+              (server-start))))
 
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
 ;;----------------------------------------------------------------------------
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
-
-
-;;----------------------------------------------------------------------------
-;; Allow users to provide an optional "init-local" containing personal settings
-;;----------------------------------------------------------------------------
-(when (file-exists-p (expand-file-name "init-local.el" user-emacs-directory))
-  (error "Please move init-local.el to ~/.emacs.d/elpa-init"))
-(require 'init-local nil t)
 
 
 ;;----------------------------------------------------------------------------
@@ -184,10 +172,18 @@
 ;;----------------------------------------------------------------------------
 (require 'init-locales)
 
-(message "init completed in %.2fms"
-         (sanityinc/time-subtract-millis (current-time) before-init-time))
+
+;;----------------------------------------------------------------------------
+;; Allow users to provide an optional "init-local" containing personal settings
+;;----------------------------------------------------------------------------
+(require 'init-local nil t)
+
+
+
+(provide 'init)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
+;;; init.el ends here
