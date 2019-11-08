@@ -6,7 +6,7 @@
 ;(global-set-key (kbd "M-SPC") 'set-mark-command)
 
 ;; 设置主题
-;(load-theme ')
+(load-theme 'sanityinc-solarized-light)
 
 ;; set frame
 (set-frame-position (selected-frame) 720 0)

@@ -51,3 +51,5 @@ site-lisp/package/
 .cache/
 /forge-database.sqlite
 /transient
+/ac-comphist.dat
+/server/server
