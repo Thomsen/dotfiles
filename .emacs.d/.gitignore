@@ -53,3 +53,5 @@ site-lisp/package/
 /transient
 /ac-comphist.dat
 /server/server
+/.trello
+/request
