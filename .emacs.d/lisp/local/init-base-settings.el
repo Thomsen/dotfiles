@@ -61,25 +61,70 @@
 ;; c-x c-= increase font size (text-scale-adjust)
 ;; c-x c-- descrease font size
 ;; set a default font
-(cond
- ((string-equal system-type "windows-nt")  ;; Microsoft Windows
-  (when (member "YaHei Consolas Hybrid" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "YaHei Consolas Hybrid-10"))
-    (add-to-list 'default-frame-alist '(font . "YaHei Consolas Hybrid-10"))
-    (set-default-font "YaHei Consolas Hybrid")
-    (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
-    (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)))
- ((string-equal system-type "gnu/linux")  ;; Linux 
-  (when (member "YaHei Consolas Hybrid" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "YaHei Consolas Hybrid-10" ))
-    (add-to-list 'default-frame-alist '(font . "YaHei Consolas Hybrid-10"))
-    (global-set-key (kdb "<C-mouse-4>") 'text-scale-increase)
-    (global-set-key (kdb "<C-mouse-5>") 'text-scale-decrease)))
- ((string-equal system-type "darwin")     ;; Mac OS
-  (when (member "YaHei Consolas Hybrid" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "YaHei Consolas Hybrid-15" ))
-    (add-to-list 'default-frame-alist '(font . "YaHei Consolas Hybrid-15"))))
- )
+;; (cond
+;;  ((string-equal system-type "windows-nt")  ;; Microsoft Windows
+;;   (when (member "YaHei Consolas Hybrid" (font-family-list))
+;;     (add-to-list 'initial-frame-alist '(font . "YaHei Consolas Hybrid-10"))
+;;     (add-to-list 'default-frame-alist '(font . "YaHei Consolas Hybrid-10"))
+;;     (set-default-font "YaHei Consolas Hybrid")
+;;     (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+;;     (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)))
+;;  ((string-equal system-type "gnu/linux")  ;; Linux 
+;;   (when (member "YaHei Consolas Hybrid" (font-family-list))
+;;     (add-to-list 'initial-frame-alist '(font . "YaHei Consolas Hybrid-10" ))
+;;     (add-to-list 'default-frame-alist '(font . "YaHei Consolas Hybrid-10"))
+;;     (global-set-key (kdb "<C-mouse-4>") 'text-scale-increase)
+;;     (global-set-key (kdb "<C-mouse-5>") 'text-scale-decrease)))
+;;  ((string-equal system-type "darwin")     ;; Mac OS
+;;   (when (member "YaHei Consolas Hybrid" (font-family-list))
+;;     (add-to-list 'initial-frame-alist '(font . "YaHei Consolas Hybrid-15" ))
+;;     (add-to-list 'default-frame-alist '(font . "YaHei Consolas Hybrid-15"))))
+;;  )
+
+;;(set-face-attribute 'default nil :font "-outline-YaHei Consolas Hybrid-normal-normal-normal-mono-11-*-*-*-c-*-fontset-auto1")
+
+(defun dotfile|notebook-font()
+  ;; "Config font on HP zhan66."
+  (interactive) ;; not support zoom
+  (if (eq system-type 'windows-nt)
+      (progn
+        ;; Setting English Font
+        (set-face-attribute 'default nil :font "YaHei Consolas Hybrid 11")
+        ;; Chinese Font
+        (dolist (charset '(kana han symbol cjk-misc bopomofo))
+          (set-fontset-font (frame-parameter nil 'font)
+                            charset
+                            (font-spec :family "YaHei Consolas Hybrid" :size 16))))))
+
+(defun dotfile|s2319-font()
+  ;; "Config font on dell s2319.
+  ;;  Ubuntu Mono 10 + Yahei 14 太小了
+  ;;  Ubuntu Mono 12 + Yahei 16 比较合适
+  ;;  "
+  (interactive)
+  (if (eq system-type 'windows-nt)
+      (progn
+        ;; Setting English Font
+        (set-face-attribute 'default nil :font "YaHei Consolas Hybrid 12")
+        ;; Chinese Font
+        (dolist (charset '(kana han symbol cjk-misc bopomofo))
+          (set-fontset-font (frame-parameter nil 'font)
+                            charset
+                            (font-spec :family "YaHei Consolas Hybrid" :size 14))))))
+
+(if (eq window-system 'w32)
+    (progn
+      ;; 根据显示器实际宽度(以毫米为单位)，显示字体.
+      ;; DELL S2319HS 分辨率: 1920x1080, 屏幕尺寸: 509mm * 286mm
+      ;; EIZO EV2451 分辨率: 1920x1080, 屏幕尺寸: 528mm * 297mm
+      ;; (display-mm-height)
+      (if (>= (display-mm-width) 509)
+          (dotfile|s2319-font))
+      ;; 宽度在500mm的认为是笔记本?或者更加精确一点的方式来匹配不同的笔记本型号?
+      ;; HP ZHAN66 309mm X 175mm
+      ;; Thinkpad T430 4xxmm X 20xmm?
+      (if (eq (display-mm-width) 309)
+          (dotfile|notebook-font))))
 
 
 ;; 优先级，从后到前
