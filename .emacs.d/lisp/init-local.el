@@ -17,6 +17,7 @@
 (require 'init-clang)
 (require 'init-compat)
 (require 'init-cscope)
+(require 'init-dart-flutter)
 (require 'init-editorconfig)
 (require 'init-emmet)
 (require 'init-ess)
