@@ -2,6 +2,6 @@
 
 (require 'ein)
 (require 'ein-notebook)
-(require 'ein-subpackages)
+;(require 'ein-subpackages)
 
 (provide 'init-jupyter)

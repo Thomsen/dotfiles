@@ -74,7 +74,7 @@
 
 
 
-(require-package 'goto-gem)
+(maybe-require-package 'goto-gem)
 
 
 (require-package 'bundler)
